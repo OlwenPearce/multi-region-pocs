@@ -1,9 +1,10 @@
 import {buyADogRoute} from "./routes/buy-a-dog/route";
+import {clientValidationPlugin} from "./plugins/clientValidation";
 
 export async function buildApp(context: unknown): Promise<FastifyInstance> {
     const app = Fastify();
 
-    //common set up
+    //set up
     //e.g.
     // app.addHook('onResponse', (_, reply, done) => {
     //     done some stuff
@@ -11,6 +12,8 @@ export async function buildApp(context: unknown): Promise<FastifyInstance> {
     // });
 
     //await app.register(allMyPlugins);
+
+    app.register(clientValidationPlugin);
 
     //app.setValidatorCompiler(validatorCompiler);
     //app.setSerializerCompiler(serializerCompiler);

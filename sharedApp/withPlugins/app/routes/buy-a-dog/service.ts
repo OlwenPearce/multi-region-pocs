@@ -1,9 +1,8 @@
 import {canSellDogPetsAtHome} from "../validation";
 import {Dog} from "./types";
-import {canSellDog} from "./validation";
 
 export async function buyADog(
-    context: { database: ServiceDatabase; repositories: DatabaseManager },
+    context: { database: ServiceDatabase; repositories: DatabaseManager; validate: unknown },
     request: {
         params: UrlParams;
     },
@@ -15,7 +14,7 @@ export async function buyADog(
         id
     });
 
-    canSellDog(dog)
+    validate.canSellDog(dog)
 
     return reply.status(200).send(dog);
 }

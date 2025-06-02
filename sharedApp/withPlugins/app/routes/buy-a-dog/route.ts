@@ -20,6 +20,7 @@ export const buyADogRoute = (
                 {
                     database: server.postgres,
                     repositories: server.repositories,
+                    validation: server.clientValidation,
                 },
                 req,
                 res
