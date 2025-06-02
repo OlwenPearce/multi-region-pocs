@@ -1,7 +1,7 @@
 import {buyADogRoute} from "./routes/buy-a-dog/route";
 import {clientValidationPlugin} from "./plugins/clientValidation";
 
-export async function buildApp(context: unknown): Promise<FastifyInstance> {
+export async function buildApp(context: {}): Promise<FastifyInstance> {
     const app = Fastify();
 
     //set up
@@ -11,7 +11,7 @@ export async function buildApp(context: unknown): Promise<FastifyInstance> {
     //     done();
     // });
 
-    //await app.register(allMyPlugins);
+    await app.register(postgresPlugin, context);
 
     app.register(clientValidationPlugin);
 

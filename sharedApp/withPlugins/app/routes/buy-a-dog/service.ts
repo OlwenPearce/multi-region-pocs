@@ -2,7 +2,7 @@ import {canSellDogPetsAtHome} from "../validation";
 import {Dog} from "./types";
 
 export async function buyADog(
-    context: { database: ServiceDatabase; repositories: DatabaseManager; validate: unknown },
+    context: { database: ServiceDatabase; repositories: DatabaseManager; validatation: unknown },
     request: {
         params: UrlParams;
     },
