@@ -1,4 +1,5 @@
 import {ServiceDatabase} from "../database";
+import {canSellDogPets4U, canSellDogPetsAtHome} from "../routes/buy-a-dog/validation";
 
 declare module 'fastify' {
     interface FastifyInstance {
@@ -7,6 +8,18 @@ declare module 'fastify' {
 }
 
 type PluginOptions = { db: ServiceDatabase };
+
+//option for different table
+const getDatabaseForRetailer = () => {
+    switch (system.env.CLIENT) {
+        case "PetsAtHome":
+            return ServiceDatabasePetsAtHome;
+        case "Pets4U":
+            return ServiceDatabasePets4U;
+        default:
+            throw new Error("Invalid CLIENT environment variable");
+    }
+}
 
 const plugin: FastifyPluginAsync<PluginOptions> = async (
     fastify: FastifyInstance,
