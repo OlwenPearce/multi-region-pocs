@@ -1,5 +1,5 @@
 import {ServiceDatabase, ServiceDatabasePets4U, ServiceDatabasePetsAtHome} from "../database";
-import {canSellDogPets4U, canSellDogPetsAtHome} from "../routes/buy-a-dog/validation";
+import {getForRetailer} from "../context/types";
 
 declare module 'fastify' {
     interface FastifyInstance {

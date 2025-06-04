@@ -1,5 +1,8 @@
 import {buyADogRoute} from "./routes/buy-a-dog/route";
 import {clientValidationPlugin} from "./plugins/clientValidation";
+import {RoutesForRetailers} from "./context/routes";
+import {getForRetailer} from "./context/types";
+import {postgresPlugin} from "./plugins/postgresPlugin";
 
 export async function buildApp(context: {}): Promise<FastifyInstance> {
     const app = Fastify();
@@ -18,7 +21,7 @@ export async function buildApp(context: {}): Promise<FastifyInstance> {
     //app.setValidatorCompiler(validatorCompiler);
     //app.setSerializerCompiler(serializerCompiler);
 
-    const routes = [ buyADogRoute ]
+    const routes = getForRetailer(RoutesForRetailers)
 
     // Routes
     await app.server.register(routes, { prefix: 'v0/' });
