@@ -7,7 +7,11 @@ type BaseDog = {
 
 export type PetsAtHomeDog = BaseDog & {
     breed: "LAB" | "PUG" | "BULLDOG";
-    isRescue: boolean;
+    rescueData: {
+        rescueName: string;
+        rescueContact: string;
+        foundAt: string;
+    } | null
 }
 
 export type Pets4UDog = BaseDog & {

@@ -7,11 +7,20 @@ import {Dog, Pets4UDog, PetsAtHomeDog} from "../routes/buy-a-dog/types";
 //     dog: DogTable
 // }
 
+type TableMetadata = { createdAt: Date; updatedAt: Date };
+
 //alternative
-type DogTablePetsAtHome = PetsAtHomeDog & { createdAt: Date; updatedAt: Date };
-type DogTablePets4U = Pets4UDog & { createdAt: Date; updatedAt: Date };
+type DogTablePetsAtHome = Omit<PetsAtHomeDog, "rescueData"> & TableMetadata & { rescueId: string | null };
+type DogTablePets4U = Pets4UDog & TableMetadata;
+type RescueDataTable = {
+    id: string;
+    rescueName: string;
+    rescueContact: string;
+    foundAt: Date;
+} & TableMetadata
 export interface ServiceDatabasePetsAtHome {
-    dog: DogTablePetsAtHome
+    dog: DogTablePetsAtHome,
+    rescueData: RescueDataTable
 }
 
 export interface ServiceDatabasePets4U {

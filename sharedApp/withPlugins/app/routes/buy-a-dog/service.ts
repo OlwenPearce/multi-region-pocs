@@ -14,7 +14,12 @@ export async function buyADog(
         id
     });
 
-    validate.canSellDog(dog)
+    validatation.canSellDog(dog)
+
+    if (dog.rescueId) {
+        const rescueData = await context.repositories.rescueData.getById({id: dog.rescueId})
+        dog.rescueData = rescueData;
+    }
 
     return reply.status(200).send(dog);
 }
