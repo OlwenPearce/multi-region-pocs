@@ -17,7 +17,7 @@ const plugin: FastifyPluginAsync<PluginOptions> = async (
         return;
     }
 
-    const tables = getForRetailer(ServiceDatabasePetsAtHome, ServiceDatabasePets4U)
+    const tables = getForRetailer([ServiceDatabasePetsAtHome, ServiceDatabasePets4U])
 
     const db = setUp(tables)
 

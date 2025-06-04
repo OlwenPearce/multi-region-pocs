@@ -18,7 +18,7 @@ export async function buyADog(
 
     context.validation.canSellDog(dog)
 
-    if (dog.rescueId) {
+    if (dog.rescueId && context.database.rescueData) {
         const rescueData = await context.database.rescueData.getById({id: dog.rescueId})
         dog.rescueData = rescueData;
     }
