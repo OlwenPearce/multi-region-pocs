@@ -7,7 +7,8 @@ type TableMetadata = { createdAt: Date; updatedAt: Date };
 //or a string
 type DogTable = Pets4UDog &
     Omit<PetsAtHomeDog, "rescueData"> &
-    TableMetadata & { rescueId: string | null };
+    TableMetadata & { rescueId: string | null } &
+    { retailer: string };
 
 type RescueDataTable = {
     id: string;
