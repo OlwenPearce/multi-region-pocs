@@ -15,12 +15,14 @@ type RescueDataTable = {
 export interface ServiceDatabasePetsAtHome {
     retailer: "PetsAtHome",
     dog: DogTablePetsAtHome,
+    //addressTable: AddressTableIreland
     rescueData: RescueDataTable
 }
 
 export interface ServiceDatabasePets4U {
     retailer: "Pets4U",
     dog: DogTablePets4U
+    //addressTable: AddressTableUK
 }
 
 export type ServiceDatabase = ServiceDatabasePetsAtHome | ServiceDatabasePets4U
